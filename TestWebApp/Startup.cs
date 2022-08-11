@@ -8,9 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestWebApp.Service;
+using PrezentationLayer.Service;
 
-namespace TestWebApp
+namespace PrezentationLayer
 {
     public class Startup
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TestWebApp.Service
+namespace PrezentationLayer.Service
 {
     public class Config
     {
