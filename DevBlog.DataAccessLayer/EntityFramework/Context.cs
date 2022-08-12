@@ -20,7 +20,7 @@ namespace DevBlog.DataAccessLayer.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //"Data Source=(local)\\SQLSERVER; Database=MyCompany; Persist Security Info=false; User ID='sa'; Password='sa'; MultipleActiveResultSets=True; Trusted_Connection=False;"
+            //"Data Source=(local)\\SQLSERVER;  Database=MyCompany; Persist Security Info=false; User ID='sa'; Password='sa'; MultipleActiveResultSets=True; Trusted_Connection=False;"
 
             optionsBuilder.UseSqlServer("Data Source=(local)\\SQLSERVER; Database=MyCompany; Persist Security Info=false; User ID='sa'; Password='sa'; MultipleActiveResultSets=True; Trusted_Connection=False;");
         }
