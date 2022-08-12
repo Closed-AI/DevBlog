@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBlog.PrezentationLayer", "TestWebApp\DevBlog.PrezentationLayer.csproj", "{5B6967CE-7FBB-4CD3-A1C5-4A8C2DF61AA4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43A00490-2B8B-48D6-BB7D-DF4F396B8E4F} = {43A00490-2B8B-48D6-BB7D-DF4F396B8E4F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBlog.BusinessLogicLayer", "DevBlog.BusinessLogicLayer\DevBlog.BusinessLogicLayer.csproj", "{43A00490-2B8B-48D6-BB7D-DF4F396B8E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBlog.BusinessLogicLayer", "DevBlog.BusinessLogicLayer\DevBlog.BusinessLogicLayer.csproj", "{43A00490-2B8B-48D6-BB7D-DF4F396B8E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBlog.DataAccessLayer", "DevBlog.DataAccessLayer\DevBlog.DataAccessLayer.csproj", "{60A713B9-3CC1-4D44-842C-1F99E33786B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevBlog.DataAccessLayer", "DevBlog.DataAccessLayer\DevBlog.DataAccessLayer.csproj", "{60A713B9-3CC1-4D44-842C-1F99E33786B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
