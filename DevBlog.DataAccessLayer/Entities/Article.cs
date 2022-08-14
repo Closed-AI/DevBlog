@@ -7,6 +7,8 @@ namespace DevBlog.DataAccessLayer.Entities
 {
     public class Article : BaseEntity
     {
+        public Article() : base() {}
+
         [Required(ErrorMessage = "Введите название статьи")]
         [Display(Name = "Название статьи")]
         public override string Title { get; set; }

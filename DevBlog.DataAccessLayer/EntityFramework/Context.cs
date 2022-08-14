@@ -13,16 +13,13 @@ namespace DevBlog.DataAccessLayer.EntityFramework
     {
         public Context() { }
 
-        public Context(DbContextOptions<Context> options) : base(options)
-        { }
+        public Context(DbContextOptions<Context> options) : base(options) { }
 
         public DbSet<Article> Articles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //"Data Source=(local)\\SQLSERVER;  Database=MyCompany; Persist Security Info=false; User ID='sa'; Password='sa'; MultipleActiveResultSets=True; Trusted_Connection=False;"
-
-            optionsBuilder.UseSqlServer("Data Source=(local)\\SQLSERVER; Database=MyCompany; Persist Security Info=false; User ID='sa'; Password='sa'; MultipleActiveResultSets=True; Trusted_Connection=False;");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Database=MyCompany; Trusted_Connection=True;");
         }
     }
 }
