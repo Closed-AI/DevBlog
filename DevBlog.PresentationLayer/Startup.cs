@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PrezentationLayer.Service;
+using DevBlog.BusinessLogicLayer;
+using DevBlog.BusinessLogicLayer.Interfaces;
 
 namespace PrezentationLayer
 {
@@ -26,6 +28,8 @@ namespace PrezentationLayer
             Configuration.Bind("Project", new Config());
             
             services.AddMvc();  // добавляем сервисы MVC
+
+            services.AddTransient<IArticleService, ArticleService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

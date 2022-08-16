@@ -13,9 +13,9 @@ namespace DevBlog.BusinessLogicLayer
     {
         private IUnitOfWork database;
 
-        public ArticleService(IUnitOfWork uow)
+        public ArticleService()
         {
-            database = uow;
+            database = new UnitOfWork();
         }
 
         public void MakeArticle(ArticleDTO articleDto)

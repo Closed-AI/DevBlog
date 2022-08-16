@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevBlog.BusinessLogicLayer.Interfaces
 {
-    interface IArticleService
+    public interface IArticleService
     {
         void MakeArticle(ArticleDTO articleDto);
         ArticleDTO GetArticle(int? id);
