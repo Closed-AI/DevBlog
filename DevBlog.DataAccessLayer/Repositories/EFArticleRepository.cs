@@ -9,9 +9,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevBlog.DataAccessLayer.Repositories
 {
-    public class EFArticleRepository : IArticleRepository
+    public class EFArticleRepository : IRepository<Article>
     {
         private readonly Context context;
+
+        public EFArticleRepository(Context dbContext)
+        {
+            context = dbContext;
+        }
 
         public IQueryable<Article> GetFields()
         {

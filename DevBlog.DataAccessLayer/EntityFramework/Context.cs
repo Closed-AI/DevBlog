@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace DevBlog.DataAccessLayer.EntityFramework
 {
     public class Context : IdentityDbContext<IdentityUser>

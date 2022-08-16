@@ -6,12 +6,12 @@ using System.Text;
 
 namespace DevBlog.DataAccessLayer.Interfaces
 {
-    public interface IArticleRepository
+    public interface IRepository<T> where T : class
     {
-        IQueryable<Article> GetFields();
-        Article GetArticleById(Guid id);
-        IQueryable<Article> GetArticlesByTitle(string title);
-        void SaveArticle(Article article);
+        IQueryable<T> GetFields();
+        T GetArticleById(Guid id);
+        IQueryable<T> GetArticlesByTitle(string title);
+        void SaveArticle(T article);
         void DeleteArticle(Guid id);
     }
 }
