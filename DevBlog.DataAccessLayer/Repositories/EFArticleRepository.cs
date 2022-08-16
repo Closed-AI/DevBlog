@@ -18,35 +18,36 @@ namespace DevBlog.DataAccessLayer.Repositories
             context = dbContext;
         }
 
-        public IQueryable<Article> GetFields()
+        public IQueryable<Article> Get()
         {
             return context.Articles;
         }
 
-        public IQueryable<Article> GetArticlesByTitle(string title)
+        public IQueryable<Article> GetByTitle(string title)
         {
             return context.Articles.Where(x => x.Title == title);
         }
 
-        public Article GetArticleById(Guid id)
+        public Article GetById(Guid id)
         {
             return context.Articles.FirstOrDefault(x => x.Id == id);
         }
 
-        public void SaveArticle(Article article)
+        public void Create(Article article)
         {
-            if (article.Id == default)
-                context.Entry(article).State = EntityState.Added;
-            else
-                context.Entry(article).State = EntityState.Modified;
-
-            context.SaveChanges();
+            context.Articles.Add(article);
         }
 
-        public void DeleteArticle(Guid id)
+        public void Update(Article article)
         {
-            context.Articles.Remove(new Article() { Id = id });
-            context.SaveChanges();
+            context.Entry(article).State = EntityState.Modified;
+        }
+
+        public void Delete(Guid id)
+        {
+            var article = context.Articles.Find(id);
+            if (article != null)
+                context.Articles.Remove(new Article() { Id = id });
         }
     }
 }

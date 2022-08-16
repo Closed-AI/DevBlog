@@ -8,7 +8,7 @@ using DevBlog.DataAccessLayer.Repositories;
 
 namespace DevBlog.DataAccessLayer
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private Context db;
         private EFArticleRepository articlesRepository;

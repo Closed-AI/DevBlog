@@ -8,10 +8,11 @@ namespace DevBlog.DataAccessLayer.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        IQueryable<T> GetFields();
-        T GetArticleById(Guid id);
-        IQueryable<T> GetArticlesByTitle(string title);
-        void SaveArticle(T article);
-        void DeleteArticle(Guid id);
+        IQueryable<T> Get();
+        T GetById(Guid id);
+        IQueryable<T> GetByTitle(string title);
+        void Create(Article article);
+        void Update(Article article);
+        void Delete(Guid id);
     }
 }

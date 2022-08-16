@@ -9,7 +9,6 @@ namespace DevBlog.DataAccessLayer.Entities
     {
         protected BaseEntity()
         {
-
             AddDate = DateTime.UtcNow;
         }
 

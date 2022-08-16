@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevBlog.DataAccessLayer.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<Article> Articles { get; }
         void Save();
