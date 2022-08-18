@@ -1,6 +1,9 @@
-﻿<div class="container">
-    @for (int i = 0; i < 100; i++)
+﻿@model List<ArticleViewModel>
+<div class="container">
+    @foreach (var article in Model)
     {
-    <div>список статей</div>
+    <div>
+        @article.Title
+    </div>
     }
 </div>

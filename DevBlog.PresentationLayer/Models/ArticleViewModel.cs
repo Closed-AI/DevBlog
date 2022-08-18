@@ -9,7 +9,7 @@ namespace DevBlog.PresentationLayer.Models
     public class ArticleViewModel
     {
         [Required]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Введите название статьи")]
         [Display(Name = "Название статьи")]

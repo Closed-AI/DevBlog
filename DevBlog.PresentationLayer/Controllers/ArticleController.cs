@@ -32,7 +32,7 @@ namespace DevBlog.PresentationLayer
             else
             {
                 var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO,ArticleViewModel>()).CreateMapper();
-                var dbEntity = database.GetArticle(int.Parse(id.ToString()));
+                var dbEntity = database.GetArticle(id);
                 entity = mapper.Map<ArticleDTO,ArticleViewModel>(dbEntity);
             }
             
@@ -66,7 +66,7 @@ namespace DevBlog.PresentationLayer
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
-            var article = database.GetArticle(int.Parse(id.ToString()));
+            var article = database.GetArticle(id);
             database.DeleteArticle(article);
 
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());

@@ -24,12 +24,12 @@ namespace DevBlog.BusinessLogicLayer
             return mapper.Map<IEnumerable<Article>, List<ArticleDTO>>(database.Articles.Get());
         }
 
-        public ArticleDTO GetArticle(int? id)
+        public ArticleDTO GetArticle(Guid? id)
         {
             if (id == null)
                 throw new Exception("Не установлен id статьи");
 
-            var article = database.Articles.GetById(Guid.Parse(id.Value.ToString()));
+            var article = database.Articles.GetById((Guid)id);
 
             if (article == null)
                 throw new Exception("Статья не найдена");
@@ -60,7 +60,7 @@ namespace DevBlog.BusinessLogicLayer
 
         public void UpdateArticle(ArticleDTO articleDto)
         {
-            if (database.Articles.GetById(Guid.Parse(articleDto.Id.ToString())) == default)
+            if (database.Articles.GetById(articleDto.Id) == default)
             {
                 throw new Exception("Статья не найдена");
             }
@@ -72,14 +72,14 @@ namespace DevBlog.BusinessLogicLayer
 
         public void DeleteArticle(ArticleDTO articleDto)
         {
-            if (database.Articles.GetById(Guid.Parse(articleDto.Id.ToString())) == default)
+            if (database.Articles.GetById(articleDto.Id) == default)
             {
                 throw new Exception("Статья не найдена");
             }
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
 
-            database.Articles.Delete(Guid.Parse(articleDto.Id.ToString()));
+            database.Articles.Delete(articleDto.Id);
         }
 
         public void Dispose()

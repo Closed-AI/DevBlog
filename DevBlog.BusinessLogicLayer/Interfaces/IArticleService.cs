@@ -7,7 +7,7 @@ namespace DevBlog.BusinessLogicLayer.Interfaces
 {
     public interface IArticleService
     {
-        ArticleDTO GetArticle(int? id);
+        ArticleDTO GetArticle(Guid? id);
         IEnumerable<ArticleDTO> GetArticles();
         void CreateArticle(ArticleDTO articleDto);
         void UpdateArticle(ArticleDTO articleDto);
