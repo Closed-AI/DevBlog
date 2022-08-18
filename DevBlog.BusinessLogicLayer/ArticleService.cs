@@ -18,20 +18,6 @@ namespace DevBlog.BusinessLogicLayer
             database = new UnitOfWork();
         }
 
-        public void MakeArticle(ArticleDTO articleDto)
-        {
-            Article article = new Article
-            {
-                Title =          articleDto.Title,
-                Subtitle =       articleDto.Subtitle,
-                Text =           articleDto.Text,
-                TitleImagePath = articleDto.TitleImagePath,
-                AddDate =        articleDto.AddDate,
-            };
-            database.Articles.Create(article);
-            database.Save();
-        }
-
         public IEnumerable<ArticleDTO> GetArticles()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
@@ -56,6 +42,44 @@ namespace DevBlog.BusinessLogicLayer
                 TitleImagePath = article.TitleImagePath,
                 AddDate =        article.AddDate,
             };
+        }
+
+        public void CreateArticle(ArticleDTO articleDto)
+        {
+            Article article = new Article
+            {
+                Title =          articleDto.Title,
+                Subtitle =       articleDto.Subtitle,
+                Text =           articleDto.Text,
+                TitleImagePath = articleDto.TitleImagePath,
+                AddDate =        articleDto.AddDate,
+            };
+            database.Articles.Create(article);
+            database.Save();
+        }
+
+        public void UpdateArticle(ArticleDTO articleDto)
+        {
+            if (database.Articles.GetById(Guid.Parse(articleDto.Id.ToString())) == default)
+            {
+                throw new Exception("Статья не найдена");
+            }
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
+
+            database.Articles.Update(mapper.Map<ArticleDTO, Article>(articleDto));
+        }
+
+        public void DeleteArticle(ArticleDTO articleDto)
+        {
+            if (database.Articles.GetById(Guid.Parse(articleDto.Id.ToString())) == default)
+            {
+                throw new Exception("Статья не найдена");
+            }
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
+
+            database.Articles.Delete(Guid.Parse(articleDto.Id.ToString()));
         }
 
         public void Dispose()

@@ -12,6 +12,7 @@ body {
     line-height: 1.65;
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
+    background-color: #f0f8ff
 }
 
 h1,
@@ -2660,3 +2661,7 @@ ul.dropdown-menu li {
   background-color: #333;
 }
 /*# sourceMappingURL=style.css.map */
+
+input, label {
+    display: block;
+}

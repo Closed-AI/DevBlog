@@ -9,14 +9,10 @@ namespace DevBlog.DataAccessLayer.Entities
     {
         public Article() : base() {}
 
-        [Required(ErrorMessage = "Введите название статьи")]
-        [Display(Name = "Название статьи")]
         public override string Title { get; set; }
 
-        [Display(Name = "Краткое описание")]
         public override string Subtitle { get; set; }
 
-        [Display(Name = "Текст статьи")]
         public override string Text { get; set; }
     }
 }

@@ -7,9 +7,11 @@ namespace DevBlog.BusinessLogicLayer.Interfaces
 {
     public interface IArticleService
     {
-        void MakeArticle(ArticleDTO articleDto);
         ArticleDTO GetArticle(int? id);
         IEnumerable<ArticleDTO> GetArticles();
+        void CreateArticle(ArticleDTO articleDto);
+        void UpdateArticle(ArticleDTO articleDto);
+        void DeleteArticle(ArticleDTO articleDto); // int? id 
         void Dispose();
     }
 }
