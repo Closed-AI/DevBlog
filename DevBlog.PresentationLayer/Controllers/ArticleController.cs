@@ -55,7 +55,7 @@ namespace DevBlog.PresentationLayer
                 // dataManager.ServiceItems.SaveServiceItem(model);
                 // реализовать логику редактирования существующей статьи
 
-                var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, ArticleViewModel>()).CreateMapper();
+                var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleViewModel, ArticleDTO>()).CreateMapper();
 
                 database.CreateArticle(mapper.Map<ArticleViewModel, ArticleDTO>(model));
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
