@@ -21,18 +21,21 @@ namespace DevBlog.BusinessLogicLayer
         public IEnumerable<ArticleDTO> GetArticles()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Article>, List<ArticleDTO>>(database.Articles.Get());
+            List<ArticleDTO> result = new List<ArticleDTO>();
+
+            foreach (var item in database.Articles.Get())
+                result.Add(mapper.Map<Article, ArticleDTO>(item));
+
+            return result;
         }
 
-        public ArticleDTO GetArticle(Guid? id)
+        // в реализации из примера нет
+        public ArticleDTO GetArticle(Guid id)
         {
-            if (id == null)
-                throw new Exception("Не установлен id статьи");
-
             var article = database.Articles.GetById((Guid)id);
 
-            if (article == null)
-                throw new Exception("Статья не найдена");
+            if (id == null || article == default)
+                return null;
 
             return new ArticleDTO
             {
@@ -46,40 +49,24 @@ namespace DevBlog.BusinessLogicLayer
 
         public void CreateArticle(ArticleDTO articleDto)
         {
-            Article article = new Article
-            {
-                Title =          articleDto.Title,
-                Subtitle =       articleDto.Subtitle,
-                Text =           articleDto.Text,
-                TitleImagePath = articleDto.TitleImagePath,
-                AddDate =        articleDto.AddDate,
-            };
-            database.Articles.Create(article);
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, Article>()).CreateMapper();
+            database.Articles.Create(mapper.Map<ArticleDTO, Article>(articleDto));
             database.Save();
         }
 
         public void UpdateArticle(ArticleDTO articleDto)
         {
-            if (database.Articles.GetById(articleDto.Id) == default)
-            {
-                throw new Exception("Статья не найдена");
-            }
-
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
-
-            database.Articles.Update(mapper.Map<ArticleDTO, Article>(articleDto));
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, Article>()).CreateMapper();
+            var article = mapper.Map<ArticleDTO, Article>(articleDto);
+            database.Articles.Update(article);
+            database.Save();
         }
 
         public void DeleteArticle(ArticleDTO articleDto)
         {
-            if (database.Articles.GetById(articleDto.Id) == default)
-            {
-                throw new Exception("Статья не найдена");
-            }
-
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
-
+            if (articleDto == null) return;
             database.Articles.Delete(articleDto.Id);
+            database.Save();
         }
 
         public void Dispose()

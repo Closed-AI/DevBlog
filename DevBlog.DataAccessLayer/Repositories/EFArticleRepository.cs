@@ -40,14 +40,14 @@ namespace DevBlog.DataAccessLayer.Repositories
 
         public void Update(Article article)
         {
-            context.Entry(article).State = EntityState.Modified;
+            context.Articles.Update(article);
         }
 
         public void Delete(Guid id)
         {
             var article = context.Articles.Find(id);
             if (article != null)
-                context.Articles.Remove(new Article() { Id = id });
+                context.Articles.Remove(article);
         }
     }
 }

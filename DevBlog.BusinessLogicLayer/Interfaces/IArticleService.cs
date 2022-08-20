@@ -5,9 +5,9 @@ using System.Text;
 
 namespace DevBlog.BusinessLogicLayer.Interfaces
 {
-    public interface IArticleService
+    public interface IArticleService : IDisposable
     {
-        ArticleDTO GetArticle(Guid? id);
+        ArticleDTO GetArticle(Guid id);
         IEnumerable<ArticleDTO> GetArticles();
         void CreateArticle(ArticleDTO articleDto);
         void UpdateArticle(ArticleDTO articleDto);

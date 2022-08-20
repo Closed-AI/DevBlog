@@ -29,7 +29,7 @@ namespace PrezentationLayer
             
             services.AddMvc();  // добавляем сервисы MVC
 
-            services.AddTransient<IArticleService, ArticleService>();
+            services.AddScoped<IArticleService, ArticleService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
