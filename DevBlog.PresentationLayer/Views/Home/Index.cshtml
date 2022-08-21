@@ -2,13 +2,14 @@
 <div class="container">
     @foreach (var article in Model)
     {
-    <div>
-        @article.Title , @article.Id
-
+    <article>
+        <h2>@article.Title</h2>
+        <h3>@article.Subtitle</h3>
+        <div><img src="~/images/@article.TitleImagePath"></div>
         <form asp-controller="Article" asp-action="Delete" method="post" enctype="multipart/form-data">
             <input type="hidden" value="@article.Id" name="Id" />
             <input type="submit" value="Удалить" />
         </form>
-    </div>
+    </article>
     }
 </div>
