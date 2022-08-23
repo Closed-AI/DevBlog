@@ -1,0 +1,9 @@
+﻿@model ArticleViewModel
+<div class="container">
+    <article>
+        <h2>@Model.Title</h2>
+        <div><img src="~/images/@Model.TitleImagePath"></div>
+        <h3>@Model.Subtitle</h3>
+        @Html.Raw(Model.Text)
+    </article>
+</div>

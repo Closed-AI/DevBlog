@@ -22,6 +22,22 @@ namespace DevBlog.PresentationLayer
             hostingEnvironment = atherHostingEnvironment;
         }
 
+        public IActionResult Read(Guid id)
+        {
+            ArticleViewModel entity;
+            var mapper = new MapperConfiguration
+                (
+                    cfg => cfg.CreateMap<ArticleDTO,ArticleViewModel>()
+                ).CreateMapper();
+
+            using (IArticleService database = new ArticleService())
+            {
+                entity = mapper.Map<ArticleDTO, ArticleViewModel>(database.GetArticle(id));
+            }
+
+            return View(entity);
+        }
+
         public IActionResult Add()
         {
             ArticleViewModel entity = new ArticleViewModel();
