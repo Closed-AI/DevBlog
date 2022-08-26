@@ -15,6 +15,7 @@ namespace DevBlog.DataAccessLayer.EntityFramework
         public Context(DbContextOptions<Context> options) : base(options) { }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -12,19 +12,30 @@ namespace DevBlog.DataAccessLayer
     {
         private Context db;
         private EFArticleRepository articlesRepository;
+        private EFUserRepository usersRepository;
 
         public UnitOfWork()
         {
             db = new Context();
         }
 
-        public IRepository<Article> Articles
+        public IArticleRepository Articles
         {
             get
             {
                 if (articlesRepository == null)
                     articlesRepository = new EFArticleRepository(db);
-                return articlesRepository;
+                return (IArticleRepository)articlesRepository;
+            }
+        }
+
+        public IUserRepository Users
+        {
+            get
+            {
+                if (usersRepository == null)
+                    usersRepository = new EFUserRepository(db);
+                return (IUserRepository)usersRepository;
             }
         }
 

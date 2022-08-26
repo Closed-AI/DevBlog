@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevBlog.DataAccessLayer.Repositories
 {
-    public class EFArticleRepository : IRepository<Article>
+    public class EFArticleRepository : IArticleRepository
     {
         private readonly Context context;
 

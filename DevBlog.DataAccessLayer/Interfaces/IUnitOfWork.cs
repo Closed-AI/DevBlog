@@ -7,7 +7,8 @@ namespace DevBlog.DataAccessLayer.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Article> Articles { get; }
+        IArticleRepository Articles { get; }
+        IUserRepository Users { get; }
         void Save();
     }
 }
