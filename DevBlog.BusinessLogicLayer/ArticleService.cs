@@ -29,22 +29,15 @@ namespace DevBlog.BusinessLogicLayer
             return result;
         }
 
-        // в реализации из примера нет
         public ArticleDTO GetArticle(Guid id)
         {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleDTO>()).CreateMapper();
             var article = database.Articles.GetById((Guid)id);
 
             if (id == null || article == default)
                 return null;
 
-            return new ArticleDTO
-            {
-                Title =          article.Title,
-                Subtitle =       article.Subtitle,
-                Text =           article.Text,
-                TitleImagePath = article.TitleImagePath,
-                AddDate =        article.AddDate,
-            };
+            return mapper.Map<Article, ArticleDTO>(article);
         }
 
         public void CreateArticle(ArticleDTO articleDto)
@@ -58,6 +51,7 @@ namespace DevBlog.BusinessLogicLayer
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, Article>()).CreateMapper();
             var article = mapper.Map<ArticleDTO, Article>(articleDto);
+
             database.Articles.Update(article);
             database.Save();
         }
